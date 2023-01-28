@@ -1,3 +1,4 @@
 #!/bin/bash
-echo "PID of this script: $$"
+# Displays the PID of the current script
+echo "The PID of this script is $$"
 
