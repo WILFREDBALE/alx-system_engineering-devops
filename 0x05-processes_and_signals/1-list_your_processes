@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Get a list of all processes
+processes=$(ps aux --forest)
+
+# Print the list of processes in a user-oriented format
+echo "$processes"
+
