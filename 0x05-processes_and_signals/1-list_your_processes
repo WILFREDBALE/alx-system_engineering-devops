@@ -1,8 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# displays a list of currently running processes.
 
-# Get a list of all processes
-processes=$(ps aux --forest)
-
-# Print the list of processes in a user-oriented format
-echo "$processes"
-
+ps auxf
