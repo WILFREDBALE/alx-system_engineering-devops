@@ -1,0 +1,47 @@
+Scenario: A user wants to access the website hosted at www.foobar.com.
+
+Solution:
+
+    What is a server?
+    A server is a computer program or a hardware system that provides services or functionality to other computer programs or devices over a network.
+
+    What is the role of the domain name?
+    A domain name is a unique address that identifies a website on the internet. It makes it easier for users to remember and access a website.
+
+    What type of DNS record www is in www.foobar.com?
+    www is a subdomain and is a CNAME (Canonical Name) record that points to the A record of foobar.com.
+
+    What is the role of the web server?
+    The web server is responsible for serving web pages to clients that request them. It handles incoming HTTP requests and responds with the appropriate content, such as HTML, CSS, and JavaScript.
+
+    What is the role of the application server?
+    The application server is responsible for running the application code and generating dynamic content. It receives requests from the web server, processes them, and returns the results to the web server.
+
+    What is the role of the database?
+    The database is responsible for storing and retrieving data for the application. It is where the application stores and retrieves information such as user accounts, posts, comments, and more.
+
+    What is the server using to communicate with the computer of the user requesting the website?
+    The server communicates with the computer of the user requesting the website using the HTTP protocol over the internet.
+
+    What are the issues with this infrastructure?
+
+a. SPOF (Single Point of Failure): Since the infrastructure is composed of a single server, any hardware or software failure could cause the entire website to become unavailable.
+
+b. Downtime when maintenance is needed: Any changes to the application code or server configuration would require a restart of the web server, resulting in downtime.
+
+c. Cannot scale if too much incoming traffic: With a single server, it becomes difficult to handle a large number of requests as the server's resources become constrained.    User's Computer
+          |
+    Internet
+          |
+    DNS Server
+          |
+      +-----+
+      |  A  |---------------> 8.8.8.8
+      +-----+
+          |
+     Web Server
+     (Nginx)
+          |
+ Application Server
+          |
+     Database
