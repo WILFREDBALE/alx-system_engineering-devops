@@ -1,0 +1,19 @@
+In a typical web application infrastructure, there are several components that work together to deliver the desired functionality. These components include web servers, application servers, and databases.
+
+A web server is responsible for serving static content like HTML pages, images, and videos to clients over the internet. On the other hand, an application server is responsible for executing business logic, handling user requests, and generating dynamic content for web applications.
+
+To ensure high availability and scalability, we will use a load balancer (HAproxy) configured as a cluster with the other one. This will distribute the incoming traffic among multiple servers to avoid overloading a single server and ensure that the application is always available.
+
+To split the components into their own server, we will use a three-tier architecture. The first tier consists of web servers that handle incoming client requests and serve static content. The second tier consists of application servers that execute business logic, handle user requests, and generate dynamic content. The third tier consists of databases that store and retrieve data.
+
+In summary, we will use the following components in our infrastructure:
+
+    Web servers: These servers will serve static content and handle incoming client requests. By using multiple web servers, we can ensure high availability and scalability for our application.
+
+    Application servers: These servers will execute business logic, handle user requests, and generate dynamic content. By using multiple application servers, we can ensure high availability and scalability for our application.
+
+    Databases: These servers will store and retrieve data for our application. By using multiple database servers, we can ensure high availability and scalability for our application.
+
+    Load balancer: We will use a load balancer (HAproxy) configured as a cluster with the other one to distribute incoming traffic among multiple servers and ensure high availability and scalability for our application.
+
+We have chosen this infrastructure because it provides high availability, scalability, and fault tolerance. By splitting the components into their own servers and using a load balancer, we can ensure that our application is always available to users, even in the face of server failures or high traffic loads.
