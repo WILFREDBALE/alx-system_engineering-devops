@@ -1,0 +1,55 @@
+                               +----------+
++--------+    HTTPS traffic    | Firewall |     +--------+
+| Client +-------------------->|    A     +---->| Server |
++--------+                    |          |     +--------+
+                               +----------+
+
+                               +----------+
++--------+    HTTPS traffic    | Firewall |     +--------+
+| Client +-------------------->|    B     +---->| Server |
++--------+                    |          |     +--------+
+                               +----------+
+
+                               +----------+
++--------+    HTTPS traffic    | Firewall |     +--------+
+| Client +-------------------->|    C     +---->| Server |
++--------+                    |          |     +--------+
+                               +----------+
+
+           +-----------------+   +-----------------+
+           | SSL Certificate |   | Load Balancer   |
+           |   for Foobar    |<--| (NGINX or HAProxy)|
+           +-----------------+   +-----------------+
+
+                  +-----------------+
+                  | MySQL Database |
+                  +-----------------+
+                         ^    |
+                         |    |
+                         |    | Replication
+                         |    v
+           +-----------------+   +-----------------+
+           | MySQL Database |   | MySQL Database |
+           |   Replica 1    |   |   Replica 2    |
+           +-----------------+   +-----------------+
+                         |             |
+                         |             | Replication
+                         v             v
+                  +-----------------+
+                  | MySQL Database |
+                  |   Replica 3    |
+                  +-----------------+
+
+    Firewalls: Each server is protected by its own firewall to ensure that only authorized traffic is allowed in and out of each server. Firewalls help to secure the infrastructure and protect against common attack vectors like DDoS attacks, SQL injection, cross-site scripting, etc.
+
+    SSL Certificate: An SSL certificate is added to serve www.foobar.com over HTTPS. HTTPS provides an encrypted connection between the client and the server, ensuring that any sensitive information transmitted between them is kept confidential.
+
+    Monitoring clients: Three monitoring clients are added to collect data about the servers, application, and database performance. The monitoring tool can alert the team when any issue is detected, helping to improve uptime, reduce downtime, and improve overall performance.
+
+    Terminate SSL at the Load Balancer: Terminating SSL at the load balancer level is an issue because it creates a single point of failure, and if the load balancer goes down, the website will be inaccessible. Moreover, SSL decryption and encryption at the load balancer can increase the load on the server, leading to poor performance.
+
+    Single MySQL server capable of accepting writes: Having only one MySQL server capable of accepting writes is an issue because it creates a single point of failure. If the MySQL server goes down, the website will be inaccessible, and data may be lost. To avoid this, it is recommended to use MySQL replication to create a database cluster with multiple MySQL replicas.
+
+    Homogeneous servers: Having servers with all the same components like database, web server, and application server might be a problem because it can lead to a single point of failure. If one component goes down, it can take down the entire server, making the website inaccessible. To avoid this, it is recommended to use a load balancer to distribute traffic across multiple servers, ensuring that if one server goes down, the website remains accessible.
+
+    Monitoring QPS: To monitor the web server QPS, the monitoring tool should collect data on the number of requests per second (RPS) and multiply it by
