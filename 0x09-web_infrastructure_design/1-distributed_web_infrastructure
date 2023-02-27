@@ -1,0 +1,49 @@
++--------+           +--------+           +--------+
+| Server |           | Server |           | Server |
+|    1   |           |    2   |           |   3    |
+|        |           |        |           |        |
+|        |           |        |           |        |
+|        |           |        |           |        |
++--------+           +--------+           +--------+
+    |                    |                     |
+    +--------------------+---------------------+
+                         |
+                  +--------------+
+                  | Load Balancer|
+                  |   (HAproxy)  |
+                  +--------------+
+                         |
+                  +--------------+
+                  |  Web Server  |
+                  |   (Nginx)    |
+                  +--------------+
+                         |
+                  +--------------+
+                  |Application   |
+                  |   Server     |
+                  +--------------+
+                         |
+                  +--------------
+                  |    Database  |
+                  |   (MySQL)    |
+                  +--------------+
+
+Explanation:
+
+    Server 1, Server 2, and Server 3: These are the physical servers that host the infrastructure. We are adding two servers to ensure redundancy and prevent a single point of failure (SPOF).
+    Load Balancer (HAproxy): The load balancer distributes incoming traffic across multiple servers to ensure that no single server becomes overloaded. We are using HAproxy as it is a widely used, open-source, and reliable load balancer.
+    Web Server (Nginx): This server handles HTTP requests and responses for the website.
+    Application Server: This server runs the application code base and processes dynamic content.
+    Database (MySQL): This is the database used by the application to store and retrieve data.
+
+Specifics:
+
+    Additional elements: We are adding two servers to ensure redundancy, a load balancer to distribute traffic, a web server to handle HTTP requests and responses, an application server to run the application code, and a database to store data.
+    Load balancer algorithm: We are using the round-robin distribution algorithm for the load balancer. This algorithm distributes traffic evenly across all servers in a cycle.
+    Active-Passive setup: We are using an Active-Passive setup for the load balancer, where one server is active and the other is passive. In case of a failure, the passive server takes over the load balancing duties. The difference between Active-Active and Active-Passive is that in Active-Active, both servers are active and share the traffic load, whereas in Active-Passive, only one server is active at a time.
+    Primary-Replica (Master-Slave) cluster: In a Primary-Replica cluster, the primary node is the main server that handles all read and write operations. The replica node(s) are secondary servers that receive a copy of the data from the primary node and replicate it in near-real-time. This ensures that the data is always available, even if the primary node fails.
+    Difference between Primary and Replica node: The primary node is the main server that handles all read and write operations. It is responsible for updating the data and ensuring consistency. The replica node(s) are secondary servers that receive a copy of the data from the primary node and replicate it in near-real-time. They are used for backup purposes and can be promoted to the primary node in case of a failure.
+
+Issues:
+
+    Single point of failure (SPOF): Even though we are adding redundancy, we still have a single point of failure with the load balancer. If the load balancer fails, the website will become unavailable. To mitigate this, we can add a secondary load
