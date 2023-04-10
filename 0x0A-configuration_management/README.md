@@ -1,0 +1,1 @@
+This folder descripts the concepts of Configuration Management using configuration tools especially Puppet.
