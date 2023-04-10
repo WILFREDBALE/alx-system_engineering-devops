@@ -1,4 +1,20 @@
-#!/usr/bin/env bash
-# creates RSA key pair
+#!/bin/bash
 
-ssh-keygen -b 4096 -f school -t rsa -N betty
+# Define variables
+key_name="school"
+key_bits=4096
+passphrase="betty"
+
+# Generate RSA key pair
+openssl genrsa -aes256 -passout pass:"$passphrase" -out "$key_name"_private.pem "$key_bits"
+
+# Extract public key
+openssl rsa -in "$key_name"_private.pem -pubout -out "$key_name"_public.pem
+
+# Change permissions of private key
+chmod 400 "$key_name"_private.pem
+
+# Print success message
+echo "RSA key pair successfully created."
+echo "Private key: $key_name""_private.pem"
+echo "Public key: $key_name""_public.pem"
