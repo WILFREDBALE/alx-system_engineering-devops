@@ -1,0 +1,1 @@
+Explanation for what happens when you type https://www.google.com in your Browser and press Enter

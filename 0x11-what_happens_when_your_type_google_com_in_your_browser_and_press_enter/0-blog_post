@@ -1,0 +1,19 @@
+Explanation for what happens when you type https://www.google.com in your Browser and press Enter
+
+When you enter "https://www.google.com" in your browser and press Enter, a series of intricate steps take place to deliver the webpage to your screen. These steps involve DNS requests, TCP/IP communication, firewalls, HTTPS/SSL encryption, load-balancers, web servers, application servers, and databases working in tandem to make it happen.
+
+1. DNS Request: Your computer sends a request to a DNS server to translate the URL "www.google.com" into an IP address.
+
+2. TCP/IP: Once the IP address is obtained, your computer establishes a TCP/IP connection with the web server associated with that IP address, enabling data transmission in packets.
+
+3. Firewall: The request may pass through a firewall, which filters incoming traffic to protect the web server from unauthorized access and cyber threats.
+
+4. HTTPS/SSL: If the website uses HTTPS, a secure encrypted connection is established using SSL or TLS to protect data during transmission.
+
+5. Load-balancer: Large websites may use load-balancers to distribute traffic across multiple servers for improved performance and reliability. Web Server: The web server processes the request, hosts the website's files, and delivers them as a response.
+
+6. Application Server: Some websites use application servers to generate dynamic content based on user requests by executing server-side scripts and interacting with databases.
+
+7. Database: The application server queries the database server to retrieve data needed for the request, such as user accounts or search results. Once the response is generated, it goes back through the same steps in reverse order and is finally delivered to your browser, which renders the webpage on your screen.
+
+In summary, typing "https://www.google.com" in your browser and pressing Enter triggers a complex sequence of events involving multiple components working together to deliver the webpage to your browser, allowing you to access Google's services.
