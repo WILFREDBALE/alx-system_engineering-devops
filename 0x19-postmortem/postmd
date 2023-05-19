@@ -1,0 +1,36 @@
+Postmortem: Web Stack Outage - May 2023
+
+Issue Summary:
+Duration: May 15, 2023, 08:00 AM - May 16, 2023, 01:00 AM (PST)
+Impact: The user authentication service took a vacation, leaving users stranded on the login beach. Approximately 80% of users had to set up camp and roast marshmallows instead.
+
+Root Cause:
+The root cause of the outage was a misconfiguration in the load balancer's SSL termination settings. It decided to take a detour down the wrong path, leading to a dead end and leaving the user authentication service hanging in the air like a bungee jumper with a snapped cord.
+
+Timeline:
+
+    May 15, 2023, 08:00 AM (PST): The issue was detected when users started frantically sending messages, smoke signals, and carrier pigeons to report their inability to log in.
+    Actions taken: The incident set off alarms louder than a rock concert, grabbing the attention of the operations team. Initially, they suspected a rogue kangaroo hopping around the database, causing slow response times.
+    Misleading investigation: The database team jumped into action, armed with koala repellent and boomerangs, to optimize queries and scale up resources. However, they couldn't find a single mischievous kangaroo to blame.
+    The incident was escalated to the network team and the security team, who rolled up their sleeves and dove into the deep end of network configurations and security protocols, hoping to catch the misbehaving culprit.
+    May 15, 2023, 02:00 PM (PST): After countless cups of coffee and untangling a web of configurations, it was discovered that the load balancer had been attending clown school. Its SSL termination settings were more like clown shoes, causing SSL handshake failures.
+    Incident resolution: The load balancer was forced to give up its dreams of being a comedian and had its SSL termination settings corrected, bringing the user authentication service back from its extended coffee break.
+
+Root Cause and Resolution:
+The misconfigured load balancer, masquerading as a clown, tripped up the SSL handshake process. It fumbled with the secure connections, leaving users locked out of their accounts like a jester with a rusty lock and key. The resolution involved a stern talk with the load balancer, putting an end to its comedy career and rectifying the SSL termination settings.
+
+Corrective and Preventative Measures:
+
+    Implement an early warning system that notifies us when the load balancer starts juggling more than just connections.
+    Regularly check the load balancer's SSL/TLS configurations to make sure it doesn't end up in a tangle of clown shoes again.
+    Establish a dedicated emergency hotline for users to report any suspicious circus acts within the web stack.
+    Conduct routine audits to ensure no other components decide to put on a surprise performance and disrupt the show.
+    Create a comprehensive incident response plan that includes specific steps for dealing with clown-related incidents. Who knew they could be so troublesome?
+
+Tasks to Address the Issue:
+
+    Give the load balancer a crash course in SSL/TLS configuration best practices to avoid future clownish behavior.
+    Implement monitoring and alerts for SSL handshake failures, saving us from having to decipher clown signs and signals.
+    Conduct a thorough review of SSL/TLS configurations across all services, keeping the circus acts strictly limited to the big top.
+    Enhance our incident response plan with clear instructions for handling SSL/TLS-related issues and other circus-related emergencies.
+    Organize a team outing to the circus to foster a deeper understanding of clown psychology and potentially identify any future threats.
