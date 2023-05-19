@@ -1,0 +1,41 @@
+Postmortem: Web Stack Outage - May 2023
+
+Issue Summary:
+Duration: May 15, 2023, 08:00 AM - May 16, 2023, 01:00 AM (PST)
+Impact: The user authentication service was down, resulting in users being unable to log in. Approximately 80% of users were affected.
+
+Root Cause:
+The root cause of the outage was a misconfiguration in the load balancer's SSL termination settings. The load balancer was unable to establish secure connections, leading to the failure of the user authentication service.
+
+Timeline:
+
+    May 15, 2023, 08:00 AM (PST): The issue was detected when several customers reported being unable to log in to their accounts.
+    Actions taken: The incident was escalated to the operations team, who started investigating the issue. Initially, it was assumed to be a database connectivity problem due to high latency observed.
+    Misleading investigation: The database team focused on optimizing database queries and scaling up resources but found no significant issues.
+    The incident was escalated to the network team and the security team to investigate potential network misconfigurations and security-related causes.
+    May 15, 2023, 02:00 PM (PST): After thorough investigation, it was discovered that the load balancer's SSL termination settings were misconfigured, causing SSL handshake failures.
+    Incident resolution: The load balancer's SSL termination settings were corrected, and the user authentication service was restored.
+
+Root Cause and Resolution:
+The misconfiguration in the load balancer's SSL termination settings caused the SSL handshake failures. The load balancer was unable to negotiate secure connections with clients, resulting in the failure of the user authentication service. To resolve the issue, the load balancer's SSL termination settings were corrected to ensure proper SSL handshake.
+
+Corrective and Preventative Measures:
+
+    Implement automated monitoring and alerting for SSL handshake failures on the load balancer to detect similar issues promptly.
+    Regularly review and validate SSL/TLS configurations and settings across all components of the web stack.
+    Establish a clear communication protocol to ensure seamless escalation and collaboration between teams during incidents.
+    Conduct periodic audits and reviews of critical configurations to identify potential misconfigurations before they cause disruptions.
+    Create a comprehensive incident response plan outlining specific steps and responsibilities for various teams during incidents.
+    Enhance documentation to include detailed SSL/TLS configuration guidelines and best practices for load balancers.
+    Conduct regular training sessions for operations and network teams to increase awareness of common misconfigurations and their impact.
+
+Tasks to Address the Issue:
+
+    Update load balancer SSL termination settings to adhere to recommended configurations.
+    Implement SSL handshake failure monitoring and alerting for the load balancer.
+    Conduct a comprehensive review of SSL/TLS configurations for all services and components.
+    Enhance incident response plan to include specific steps for handling SSL/TLS-related incidents.
+    Schedule regular training sessions to educate teams about SSL/TLS best practices and configuration guidelines.
+
+Conclusion:
+The web stack outage was caused by a misconfiguration in the load balancer's SSL termination settings. Through collaborative investigation and corrective actions, the issue was resolved, and the user authentication service was restored. Implementation of preventive measures and ongoing improvements will help mitigate similar incidents in the future, ensuring a more resilient web infrastructure.
