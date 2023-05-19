@@ -1,0 +1,16 @@
+bob@dylan:~$ curl -s 127.0.0.1:5003/2-hbnb | tail -5
+    </div>
+    <footer>
+      <p>Holberton School</p>
+    </footer>
+  </body>
+</html>
+bob@dylan:~$ 
+bob@dylan:~$ curl -s 12.13.14.15/ | tail -5
+    </div>
+    <footer>
+      <p>Holberton School</p>
+    </footer>
+  </body>
+</html>
+bob@dylan:~$ 
